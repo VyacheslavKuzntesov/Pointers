@@ -8,9 +8,9 @@ void main()
 {
 	setlocale(LC_ALL, "");
 	int a = 2, b = 3;								//в функции меин 0x100[2]'a'					0x104[3]'b'
-	//cout << a << "\t" << b << endl;
+	cout << a << "\t" << b << endl;
 	Exchange(a, b);
-	//cout << a << "\t" << b << endl;
+	cout << a << "\t" << b << endl;
 }
 
 void Exchange(int& a, int& b)							//в функции Exchange 0x200[2]'a'					0x204[3]'b'
@@ -18,7 +18,7 @@ void Exchange(int& a, int& b)							//в функции Exchange 0x200[2]'a'				
 	int buffer = a;
 	a = b;
 	b = buffer;
-	cout << a << "\t" << b << endl;
+	//cout << a << "\t" << b << endl;
 }
 
 /*
