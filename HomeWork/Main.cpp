@@ -13,16 +13,20 @@ void main()
 	cout << "Введите размер массива:"; cin >> a;
 	int* arr = new int[a];
 	FillRand(arr, a);
-	cout << "Исходный массив: " << endl;
+	cout << endl << "Исходный массив: " << endl;
 	Print(arr, a);
 	Evenand_Odd_Numbers(arr, a, b, c);
 	int* even = new int[b];
 	int* odd = new int[c];
 	Evenand_Odd_Numbers_Array(arr, a, even, odd);
-	cout << "Массив чётных чисел(состоит из " << b << " элементов):" << endl;
+	cout << endl << "Массив чётных чисел(состоит из " << b << " элементов):" << endl;
 	Print(even, b);
-	cout << "Массив нечётных чисел(состоит из " << c << " элементов):" << endl;
+	cout << endl << "Массив нечётных чисел(состоит из " << c << " элементов):" << endl;
 	Print(odd, c);
+	delete[] arr;
+	delete[] even;
+	delete[] odd;
+
 }
 
 void FillRand(int arr[], const int a)
