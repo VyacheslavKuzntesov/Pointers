@@ -26,7 +26,6 @@ void main()
 	delete[] arr;
 	delete[] even;
 	delete[] odd;
-
 }
 
 void FillRand(int arr[], const int a)
