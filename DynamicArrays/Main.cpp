@@ -49,30 +49,27 @@ n++;*/
 #endif // THEORY
 
 #ifdef DZ
-//ДЗ
+	//ДЗ
 
-//Добавляет значение в конец массива
-//arr = push_back(arr, n);
+	//Добавляет значение в конец массива
+	//arr = push_back(arr, n);
 
-//Добавляет значение в начало массива
-//arr = push_front(arr, n);
+	//Добавляет значение в начало массива
+	//arr = push_front(arr, n);
 
-//Добавляет значение в массив по указанному индексу
-//arr = insert(arr, n);
+	//Добавляет значение в массив по указанному индексу
+	//arr = insert(arr, n);
 
-//Удаляет последний элемент из массива
-//arr = pop_back(arr, n);
+	//Удаляет последний элемент из массива
+	//arr = pop_back(arr, n);
 
-//Удаляет нулевой элемент из массива
-//arr = pop_front(arr, n);
+	//Удаляет нулевой элемент из массива
+	//arr = pop_front(arr, n);
 
-//Удаляет значение из массива по указанному индексу
-//arr = erase(arr, n);  
+	//Удаляет значение из массива по указанному индексу
+	//arr = erase(arr, n);  
 
 #endif // DZ
-
-
-
 
 	Print(arr, n);
 
@@ -141,12 +138,11 @@ int* push_back(int arr[], int& n)
 	{
 		buffer[i] = arr[i];
 	}
-	cout << "Введите добавляемое значение в начало: "; cin >> value;
-	buffer[n] = value;
 	delete[] arr;
-	arr = buffer;
+	cout << "Введите добавляемое значение в конец: "; cin >> value;
+	buffer[n] = value;
 	n++;
-	return arr;
+	return buffer;
 }
 
 int* push_front(int arr[], int& n)
@@ -157,12 +153,11 @@ int* push_front(int arr[], int& n)
 	{
 		buffer[i+1] = arr[i];
 	}
-	cout << "Введите добавляемое значение в конец: "; cin >> value;
+	cout << "Введите добавляемое значение в начало: "; cin >> value;
 	buffer[0] = value;
 	delete[] arr;
-	arr = buffer;
 	n++;
-	return arr;
+	return buffer;
 }
 
 int* insert(int arr[], int& n)
@@ -183,9 +178,8 @@ int* insert(int arr[], int& n)
 		buffer[h] = arr[i];
 	}
 	delete[] arr;
-	arr = buffer;
 	n++;
-	return arr;
+	return buffer;
 }
 
 int* pop_back(int arr[], int& n)
@@ -197,9 +191,8 @@ int* pop_back(int arr[], int& n)
 	}
 	cout << "Удаление последнего элемента: " << endl;
 	delete[] arr;
-	arr = buffer;
 	n--;
-	return arr;
+	return buffer;
 }
 
 int* pop_front(int arr[], int& n)
@@ -211,9 +204,8 @@ int* pop_front(int arr[], int& n)
 	}
 	cout << "Удаление нулевого элемента: " << endl;
 	delete[] arr;
-	arr = buffer;
 	n--;
-	return arr;
+	return buffer;
 }
 
 int* erase(int arr[], int& n)
@@ -231,7 +223,6 @@ int* erase(int arr[], int& n)
 		buffer[h] = arr[i];
 	}
 	delete[] arr;
-	arr = buffer;
 	n--;
-	return arr;
+	return buffer;
 }
