@@ -49,14 +49,15 @@ void Evenand_Odd_Numbers(int arr[], const int a, int& b, int& c)
 {
 	for (int i = 0; i < a; i++)
 	{
-		if (arr[i]%2==0)
+		arr[i] % 2 == 0 ? b++ : c++;
+		/*if (arr[i]%2==0)
 		{
 			b++;
 		}
 		else
 		{
 			c++;
-		}
+		}*/
 	}
 }
 
@@ -65,7 +66,8 @@ void Evenand_Odd_Numbers_Array(int arr[], const int a, int even[], int odd[])
 	int b = 0, c = 0;
 	for (int i = 0; i < a; i++)
 	{
-		if (arr[i] % 2 == 0)
+		arr[i] % 2 == 0 ? (even[b] = arr[i], b++) : (odd[c] = arr[i], c++);
+		/*if (arr[i] % 2 == 0)
 		{
 			even[b] = arr[i];
 			b++;
@@ -74,6 +76,6 @@ void Evenand_Odd_Numbers_Array(int arr[], const int a, int even[], int odd[])
 		{
 			odd[c] = arr[i];
 			c++;
-		}
+		}*/
 	}
 }
