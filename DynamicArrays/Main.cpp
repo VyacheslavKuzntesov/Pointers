@@ -67,7 +67,7 @@ n++;*/
 	//arr = pop_front(arr, n);
 
 	//Удаляет значение из массива по указанному индексу
-	//arr = erase(arr, n);  
+	arr = erase(arr, n);  
 
 #endif // DZ
 
@@ -216,10 +216,7 @@ int* erase(int arr[], int& n)
 	cout << "Введите индекс удаляемого значения : "; cin >> index;
 	for (int i = 0; i < n; i++, h++)
 	{
-		if (i == index - 1)
-		{
-			i++;
-		}
+		if (i == index - 1)i++;
 		buffer[h] = arr[i];
 	}
 	delete[] arr;
