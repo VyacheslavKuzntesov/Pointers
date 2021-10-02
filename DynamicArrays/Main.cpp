@@ -67,7 +67,7 @@ n++;*/
 	//arr = pop_front(arr, n);
 
 	//Удаляет значение из массива по указанному индексу
-	arr = erase(arr, n);  
+	//arr = erase(arr, n);  
 
 #endif // DZ
 
