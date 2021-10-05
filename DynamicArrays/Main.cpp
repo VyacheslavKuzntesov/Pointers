@@ -172,6 +172,7 @@ n++;*/
 	//arr = erase_col(arr, rows, cols, index);
 
 	Print(arr, rows, cols);
+	clear(arr, rows);
 #endif // DYNAMIC_MEMORY_2
 
 
@@ -193,7 +194,6 @@ void clear(int** arr, const int rows)
 	{
 		delete[] arr[i];
 	}
-
 	delete[] arr;
 }
 
@@ -201,8 +201,7 @@ void FillRand(int arr[], const int n, int minRand, int maxRand)
 {
 	for (int i = 0; i < n; i++)
 	{
-		//Используя арифметику указателей и оператор разыменования
-		*(arr + i) = rand() % (maxRand - minRand) + minRand;
+		arr[i] = rand() % (maxRand - minRand) + minRand;
 	}
 }
 
@@ -229,8 +228,10 @@ void Print(int arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		//или же через оператор индексирования[]
+		//через оператор индексирования[]
 		cout << arr[i] << "\t";
+		//Используя арифметику указателей и оператор разыменования
+		//cout << *(arr + i) << "\t";
 	}
 	cout << endl;
 }
@@ -241,7 +242,10 @@ void Print(int** arr, const int rows, const int cols)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			cout << arr[i][j] << "\t";
+			//через оператор индексирования[]
+			//cout << arr[i][j] << "\t";
+			//Используя арифметику указателей и оператор разыменования
+			cout << *(*(arr + i) + j) << "\t";
 		}
 		cout << endl;
 	}
