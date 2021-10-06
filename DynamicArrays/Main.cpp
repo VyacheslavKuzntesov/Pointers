@@ -151,8 +151,8 @@ n++;*/
 	Print(arr, rows, cols);
 	cout << delimiter << endl;
 
-	//arr = push_row_back(arr, rows, cols);
-	//FillRand(arr[rows - 1], cols,200,400);
+	arr = push_row_back(arr, rows, cols);
+	FillRand(arr[rows - 1], cols,200,400);
 	
 	//push_col_back(arr, rows, cols);
 	//FillRandCol(arr, rows, cols, cols - 1, 200, 400);
