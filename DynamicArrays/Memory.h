@@ -22,3 +22,22 @@ template <typename T>void pop_col_front(T** arr, const int rows, int& cols);
 template <typename T>T* erase(T arr[], int& n);
 template <typename T>T** erase_row(int** arr, int& rows, const int cols, const int index);
 template <typename T>void erase_col(T** arr, const int rows, int& cols, const int index);
+
+template <typename T>T** allocate(const int rows, const int cols)
+{
+	T** arr = new T * [rows] {};
+	for (int i = 0; i < rows; i++)
+	{
+		arr[i] = new T[cols]{};
+	}
+	return arr;
+}
+
+template <typename T>void clear(T** arr, const int rows)
+{
+	for (int i = 0; i < rows; i++)
+	{
+		delete[] arr[i];
+	}
+	delete[] arr;
+}
