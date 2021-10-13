@@ -1,4 +1,3 @@
-#include"stdafx.h"
 #include"Memory.h"
 
 int** allocate(const int rows, const int cols)

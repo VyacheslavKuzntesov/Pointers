@@ -1,4 +1,7 @@
 #pragma once
+#include<iostream>
+using namespace std;
+
 int** allocate(const int rows, const int cols);
 void clear(int** arr, const int rows);
 int* push_back(int arr[], int& n);
