@@ -19,13 +19,13 @@ void FillRandCol(double** arr, const int rows, const int cols, int nomer_element
 void FillRandCol(char** arr, const int rows, const int cols, int nomer_elementa, int minRand = 0, int maxRand = 100);
 template <typename T>void Print(T arr[], const int n);
 template <typename T>void Print(T** arr, const int rows, const int cols);
-template <typename T>T* push_back(T arr[], int& n);
+template <typename T>T* push_back(T arr[], int& n, T value);
 template <typename T>T** push_row_back(T** arr, int& rows, const int cols);
 template <typename T>void push_col_back(T** arr, const int rows, int& cols);
 template <typename T>T* push_front(int arr[], int& n);
 template <typename T>T** push_row_front(T** arr, int& rows, const int cols);
 template <typename T>void push_col_front(T** arr, const int rows, int& cols);
-template <typename T>T* insert(T arr[], int& n);
+template <typename T>T* insert(T arr[], int& n, T value, int index);
 template <typename T>T** insert_row(T** arr, int& rows, const int cols, const int index);
 template <typename T>T** insert_col(T** arr, const int rows, int& cols, const int index);
 template <typename T>T* pop_back(T arr[], int& n);
@@ -151,8 +151,8 @@ n++;*/
 	Print(arr, rows, cols);
 	cout << delimiter << endl;
 
-	arr = push_row_back(arr, rows, cols);
-	FillRand(arr[rows - 1], cols, 200, 400);
+	//arr = push_row_back(arr, rows, cols);
+	//FillRand(arr[rows - 1], cols, 200, 400);
 
 	//push_col_back(arr, rows, cols);
 	//FillRandCol(arr, rows, cols, cols - 1, 200, 400);
@@ -351,16 +351,14 @@ Heap(куча) - куча свободной оперативной памяти в ОС когда оператор new выделяет 
 #endif // THEORY
 
 
-template <typename T>T* push_back(T arr[], int& n)
+template <typename T>T* push_back(T arr[], int& n,T value)
 {
 	T* buffer = new T[n + 1]{};
-	int value;
 	for (int i = 0; i < n; i++)
 	{
 		buffer[i] = arr[i];
 	}
 	delete[] arr;
-	cout << "Введите добавляемое значение в конец: "; cin >> value;
 	buffer[n] = value;
 	n++;
 	return buffer;
@@ -368,7 +366,7 @@ template <typename T>T* push_back(T arr[], int& n)
 
 template <typename T>T** push_row_back(T** arr, int& rows, const int cols)
 {
-	T** buffer = new T * [rows + 1]{};
+	/*T** buffer = new T * [rows + 1]{};
 	for (int i = 0; i < rows; i++)
 	{
 		buffer[i] = arr[i];
@@ -376,17 +374,20 @@ template <typename T>T** push_row_back(T** arr, int& rows, const int cols)
 	delete[] arr;
 	buffer[rows] = new T[cols]{};
 	rows++;
-	return buffer;
+	return buffer;*/
+	return push_back(arr, rows, new T[cols]{});
 }
 
 template <typename T>void push_col_back(T** arr, const int rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols + 1]{};
+		/*T* buffer = new T[cols + 1]{};
 		for (int j = 0; j < cols; j++)buffer[j] = arr[i][j];
 		delete[] arr[i];
-		arr[i] = buffer;
+		arr[i] = buffer;*/
+		arr[i] = push_back(arr[i], cols,T());
+		cols--;
 	}
 	cols++;
 }
@@ -432,14 +433,12 @@ template <typename T>void push_col_front(T** arr, const int rows, int& cols)
 	cols++;
 }
 
-template <typename T>T* insert(T arr[], int& n)
+template <typename T>T* insert(T arr[], int& n, T value, int index)
 {
 	T* buffer = new T[n + 1]{};
 	int value;
 	int index;
 	int h = 0;
-	cout << "Введите добавляемое значение: "; cin >> value;
-	cout << "Введите индекс: "; cin >> index;
 	for (int i = 0; i < n; i++, h++)
 	{
 		if (i == index - 1)
@@ -493,7 +492,6 @@ template <typename T>T* pop_back(T arr[], int& n)
 	{
 		buffer[i] = arr[i];
 	}
-	cout << "Удаление последнего элемента: " << endl;
 	delete[] arr;
 	n--;
 	return buffer;
@@ -501,24 +499,28 @@ template <typename T>T* pop_back(T arr[], int& n)
 
 template <typename T>T** pop_row_back(T** arr, int& rows, const int cols)
 {
-	T** buffer = new T * [--rows]{};
+	/*T** buffer = new T * [--rows]{};
 	for (int i = 0; i < rows; i++)
 	{
 		buffer[i] = arr[i];
 	}
 	delete[] arr[rows];
 	delete[] arr;
-	return buffer;
+	return buffer;*/
+	delete[] arr[rows - 1];
+	return pop_back(arr, rows);
 }
 
 template <typename T>void pop_col_back(T** arr, const int rows, int& cols)
 {
 	for (int i = 0; i < rows; i++)
 	{
-		T* buffer = new T[cols - 1];
+		/*T* buffer = new T[cols - 1];
 		for (int j = 0; j < cols - 1; j++)buffer[j] = arr[i][j];
 		delete[] arr[i];
-		arr[i] = buffer;
+		arr[i] = buffer;*/
+		arr[i] = pop_back(arr[i], cols);
+		cols++;
 	}
 	cols--;
 }
@@ -530,7 +532,6 @@ template <typename T>T* pop_front(T arr[], int& n)
 	{
 		buffer[i - 1] = arr[i];
 	}
-	cout << "Удаление нулевого элемента: " << endl;
 	delete[] arr;
 	n--;
 	return buffer;
@@ -561,12 +562,10 @@ template <typename T>void pop_col_front(T** arr, const int rows, int& cols)
 	cols--;
 }
 
-template <typename T>T* erase(T arr[], int& n)
+template <typename T>T* erase(T arr[], int& n,int index)
 {
 	T* buffer = new T[n - 1]{};
-	int index;
 	int h = 0;
-	cout << "Введите индекс удаляемого значения : "; cin >> index;
 	for (int i = 0; i < n; i++, h++)
 	{
 		if (i == index - 1)i++;
@@ -601,3 +600,4 @@ template <typename T>void erase_col(T** arr, const int rows, int& cols, const in
 	}
 	cols--;
 }
+
