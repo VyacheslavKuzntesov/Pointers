@@ -1,6 +1,18 @@
-#include"stdafx.h"
-#include"Array.h"
+#include<iostream>
+
+#include"FillRand.h"
+#include"Print.h"
 #include"Memory.h"
+
+using namespace std;
+using std::cout;
+using std::cin;
+
+//#define THEORY
+//#define DZ
+#define delimiter "\n------------------------------------------------\n"
+//#define DYNAMIC_MEMORY_1
+#define DYNAMIC_MEMORY_2
 
 void main()
 {
