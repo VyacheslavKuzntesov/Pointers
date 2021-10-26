@@ -3,6 +3,9 @@
 #include"FillRand.h"
 #include"Print.h"
 #include"Memory.h"
+//#include"FillRand.cpp"
+//#include"Print.cpp"
+//#include"Memory.cpp"
 
 using namespace std;
 using std::cout;
@@ -13,7 +16,9 @@ using std::cin;
 #define delimiter "\n------------------------------------------------\n"
 //#define DYNAMIC_MEMORY_1
 #define DYNAMIC_MEMORY_2
+//#define MAIN
 
+#ifdef MAIN
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -155,6 +160,8 @@ n++;*/
 
 
 }
+
+#endif // MAIN
 
 
 

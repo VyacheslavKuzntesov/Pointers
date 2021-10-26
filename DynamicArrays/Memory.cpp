@@ -1,6 +1,4 @@
-//#include"Memory.h"
-#include<iostream>
-using namespace std;
+#include"Memory.h"
 
 template <typename T>T** allocate(const int rows, const int cols)
 {
